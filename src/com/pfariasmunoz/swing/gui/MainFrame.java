@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.prefs.Preferences;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -24,6 +25,7 @@ public class MainFrame extends JFrame {
         private Controller controller;
         private TablePanel tablePanel;
         private PrefsDialog prefsDialog;
+        private Preferences preferences;
 
 	public MainFrame() {
 		super("Hello World");
@@ -36,6 +38,8 @@ public class MainFrame extends JFrame {
                 tablePanel = new TablePanel();
                 prefsDialog = new PrefsDialog(this);
                 
+                preferences = Preferences.userRoot().node("db");
+                
                 
                 controller = new Controller();
                 
@@ -46,6 +50,18 @@ public class MainFrame extends JFrame {
                         controller.removePerson(row);
                     }
                 });
+                
+                prefsDialog.setPrefsListener((user, password, port) -> {
+                    preferences.put("user", user);
+                    preferences.put("password", password);
+                    preferences.putInt("port",port);
+                });
+                
+                String user = preferences.get("user", "");
+                String password = preferences.get("password", "");
+                Integer port = preferences.getInt("port", 3306);
+                
+                prefsDialog.setDefaults(user, password, ABORT);
                 
                 fileChooser = new JFileChooser();
                 fileChooser.addChoosableFileFilter(new PersonFileFilter());
