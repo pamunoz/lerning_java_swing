@@ -20,8 +20,8 @@ public class TestDatabase {
         } catch (Exception ex) {
             ex.getMessage();
         }
-        db.addPerson(new Person("Joe", "builder", AgeCategory.ADULT, EmploymentCategory.EMPLOYED, "777", true, GenderCategory.MALE));
-        db.addPerson(new Person("Sue", "artist", AgeCategory.SENIOR, EmploymentCategory.SELF_EMPLOYED, null, false, GenderCategory.FEMALE));
+        db.addPerson(new Person("Joe", "lion tamer", AgeCategory.ADULT, EmploymentCategory.EMPLOYED, "777", true, GenderCategory.MALE));
+        db.addPerson(new Person("Sue", "artist", AgeCategory.ADULT, EmploymentCategory.SELF_EMPLOYED, null, false, GenderCategory.FEMALE));
 
         
         
