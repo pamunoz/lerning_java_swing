@@ -8,11 +8,28 @@ import com.pfariasmunoz.swing.model.GenderCategory;
 import com.pfariasmunoz.swing.model.Person;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Controller {
     
     Database db = new Database();
+    
+    public void save() throws SQLException {
+        db.save();
+    }
+    
+    public void connect() throws Exception {
+        db.connect();
+    }
+    
+    public void disconnect() {
+        db.disconnect();
+    }
+    
+    public void load() throws SQLException {
+        db.load();
+    }
     
     public List<Person> getPeople() {
         return db.getPeople();
