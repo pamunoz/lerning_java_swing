@@ -18,6 +18,10 @@ public class Controller {
         return db.getPeople();
     }
     
+    public void removePerson(int index) {
+        db.removePerson(index);
+    }
+    
     public void addPerson(FormEvent e) {
         String name = e.getName();
         String occupation = e.getOccupation();
